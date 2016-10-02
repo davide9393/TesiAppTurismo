@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/main_content"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"  >
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view_esp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:clipToPadding="false"/>
+
+</android.support.design.widget.CoordinatorLayout>

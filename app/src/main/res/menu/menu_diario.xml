@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/modifica"
+        android:orderInCategory="100"
+        android:title="@string/modifica" />
+
+    <item
+        android:id="@+id/cancella"
+        android:orderInCategory="101"
+        android:title="@string/cancella" />
+</menu>

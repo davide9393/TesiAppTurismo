@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "it.uniba.di.ivu.progettotesi.appturismo"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    /*compile 'com.google.android.gms:play-services:8.4.0'*/
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.google.android.gms:play-services-maps:9.4.0'
+    compile 'com.google.android.gms:play-services-contextmanager:9.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.+'
+    compile 'com.android.support:cardview-v7:23.4.+'
+    compile 'com.google.maps.android:android-maps-utils:0.3+'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    // per dire che voglio usare la fx database di firebase
+    compile 'com.google.firebase:firebase-core:9.4.0'
+    // Analytics
+    compile 'com.google.firebase:firebase-database:9.4.0'
+    // Realtime Database
+    compile 'com.google.firebase:firebase-storage:9.4.0'
+    // Storage
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    //auth
+    //glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //google login
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
+    //facebook
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.google.code.gson:gson:2.7'
+}
+
+apply plugin: 'com.google.gms.google-services'

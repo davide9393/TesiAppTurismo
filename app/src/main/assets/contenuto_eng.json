@@ -1,0 +1,13 @@
+{
+  "contenuto": [
+    {
+      "interests":[{"sottosezione1": "monuments"}, {"sottosezione2": "churches"},{"sottosezione3": "museums"},{"sottosezione4": "shores"},{"sottosezione5": "family entertainment"},{"sottosezione6": "nightlife"}]
+    },
+    {
+      "eat":[{"sottosezione1": "restaurants"},{ "sottosezione2": "pizzerias"},{"sottosezione1": "ice cream shops"}]
+    },
+    {
+      "sleep":[{"sottosezione1": "bed and breakfast"}, {"sottosezione2": "hotel"}]
+    }
+  ]
+}

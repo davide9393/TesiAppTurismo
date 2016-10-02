@@ -1,0 +1,13 @@
+{
+  "contenuto": [
+    {
+      "interessi":[{"sottosezione1": "monumenti"}, {"sottosezione2": "chiese"},{"sottosezione3": "musei"},{"sottosezione4": "lidi"},{"sottosezione5": "svago famiglie"},{"sottosezione6": "svago adulti"}]
+    },
+    {
+      "mangiare":[{"sottosezione1": "ristoranti"},{ "sottosezione2": "pizzerie"},{"sottosezione1": "gelaterie"}]
+    },
+    {
+      "dormire":[{"sottosezione1": "bed and breakfast"}, {"sottosezione2": "hotel"}]
+    }
+  ]
+}

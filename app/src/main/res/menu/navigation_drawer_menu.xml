@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:checked="true"
+            android:id="@+id/item_navigation_drawer_inbox"
+            android:icon="@drawable/ic_explore"
+            android:title="@string/item1" />
+        <item
+            android:id="@+id/item_navigation_drawer_starred"
+            android:icon="@drawable/ic_visibility"
+            android:title="@string/item2" />
+        <item
+            android:id="@+id/item_navigation_drawer_diario"
+            android:icon="@drawable/ic_book"
+            android:title="@string/item3" />
+        <item
+            android:id="@+id/item_miei_coupon"
+            android:icon="@drawable/ic_action_content_drafts"
+            android:title="@string/item4" />
+    </group>
+
+    <item android:title="@string/submenu">
+    <menu>
+        <item
+            android:id="@+id/item_navigation_drawer_settings"
+            android:icon="@drawable/ic_action_action_settings"
+            android:title="@string/item5" />
+        <item
+            android:id="@+id/item_navigation_drawer_help_and_feedback"
+            android:icon="@drawable/ic_action_action_help"
+            android:title="@string/item6" />
+    </menu>
+    </item>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+            <item
+                android:id="@+id/item_navigation_drawer_logout"
+                android:icon="@drawable/ic_exit_to_app_24dp"
+                android:title="Logout" />
+    </group>
+
+</menu>

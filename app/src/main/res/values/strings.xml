@@ -1,0 +1,202 @@
+<resources>
+
+    <string name="scrivididascalia">Scrivi una didascalia...</string>
+
+    <string name="cheese_ipsum">Jarlsberg lancashire edam. Dolcelatte hard cheese brie st. agur blue
+    cheese caerphilly bavarian bergkase cheese and biscuits mascarpone. Cheeseburger swiss bavarian
+    bergkase cream cheese fromage frais cheesy feet port-salut airedale. St. agur blue cheese rubber
+    cheese caerphilly cheddar cheesecake cream cheese manchego lancashire. Roquefort squirty cheese
+    the big cheese.</string>
+
+    <string name="app_name">App Turismo</string>
+    <string name="dettaglio">Dettaglio</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="modifica">Rinomina</string>
+    <string name="cancella">Elimina</string>
+
+    <string name="menu_item_update_location">Update</string>
+    <string name="menu_item_geocode_location">GeoCode</string>
+    <string name="my_location_header">My Location</string>
+    <string name="my_location_time">Location time</string>
+
+    <string name="my_location_lat">Latitude</string>
+    <string name="my_location_lon">Longitude</string>
+    <string name="my_location_altitude">Altitude</string>
+    <string name="my_location_altitude_format">%f m</string>
+
+    <string name="my_location_geocoder_header">Geocoding</string>
+    <string name="my_location_geocoder_not_available">Geocoder non presente.</string>
+    <string name="my_location_geo_coding_not_available">Indirizzo null.</string>
+
+    <string name="loading_message">Attendi&#8230;</string>
+
+
+    <string name="album_name">App Turismo</string>
+    <string name="my_location_not_available">Location nulla.</string>
+    <string name="my_location_time_format">dd-MM-yyyy, HH:mm:ss</string>
+    <string name="no_info">--</string>
+    <string name="dataora">Data e ora</string>
+    <string name="posizione">Posizione</string>
+    <string name="mappa">Mappa</string>
+    <string name="simpledateformat">yyyyMMdd_HHmmss</string>
+
+    <string name="sceglifoto">Scegli Foto</string>
+    <string name="scattafoto">Scatta Foto</string>
+    <string name="sceglidallagalleria">Scegli dalla Galleria</string>
+    <string name="annulla">Annulla</string>
+
+    <string name="scegliposfoto">Scegli la posizione in cui hai scattato la foto</string>
+    <string name="posizionecorrente">Posizione Corrente</string>
+    <string name="scegliposizione">Scegli posizione</string>
+    <string name="messposizionecorrente">Attiva il GPS per essere localizzato</string>
+    <string name="attiva">Attiva</string>
+    <string name="no">No</string>
+
+    <string name="sceglidataorafoto">Scegli la data e ora in cui hai scattato la foto</string>
+    <string name="dataoracorrente">Data e Ora Corrente</string>
+    <string name="sceglidataora">Scegli Data e Ora</string>
+
+    <string name="modifica_pagina">Modifica Pagina</string>
+    <string name="modalita">Cambia modalita</string>
+
+    <string name="my_location_format">dd-MM-yyyy</string>
+    <string name="my_time_format"> HH:mm</string>
+
+
+    <string name="tool">"Dettaglio Barletta"</string>
+    <string name="subtool">"Sezione Dettaglio Barletta"</string>
+    <string name="item_title">Barletta</string>
+    <string name="item_desc">Barletta e un comune italiano di 94 814 abitanti,
+        capoluogo, insieme ad Andria e Trani, della provincia di Barletta-Andria-Trani in Puglia.
+    </string>
+    <string name="detail_desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+    </string>
+    <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
+
+
+    <string name="titolo_card">Barletta</string>
+    <string name="min_desc">Barletta è una delle città più belle del mondo
+    </string>
+    <string name="dettaglio_desc">Barletta è una delle città più belle del mondoBarletta è una delle città più belle del mondo
+        Barletta è una delle città più belle del mondo
+        Barletta è una delle città più belle del mondo
+        Barletta è una delle città più belle del mondo
+        Barletta è una delle città più belle del mondo
+    </string>
+    <string name="location">"8 Rue Scribe, 75009 Paris, France"</string>
+
+
+    <string name="item1">Esplora</string>
+    <string name="item2">Realtà aumentata</string>
+    <string name="item3">I miei diari</string>
+    <string name="item4">I miei coupon</string>
+    <string name="item5">Impostazioni</string>
+    <string name="item6">Help e feedback</string>
+    <string name="submenu">Impostazioni</string>
+
+    <!-- Tutorial -->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">Avanti</string>
+    <string name="skip">Salta</string>
+    <string name="start">Prosegui</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+    <string name="elimina_pagina">"Elimina Pagina"</string>
+
+
+
+
+    <!--STRINGHE PERCORSO-->
+    <string name="attendere">Wait</string>
+    <string name="cerca">I\'m calculating the path</string>
+    <string name="raggiungi">Arrive</string>
+    <string name="nessunluogo">Place unchecked</string>
+    <string name="language">en</string>
+
+    <!--STRINGHE CouponFragment-->
+    <string name="titolocoupon">My coupon</string>
+
+    <!--STRINGHE CustomAdapter-->
+    <string name="rinominadiario">Rename diary</string>
+    <string name="cancelladiario">You want to delete the diary </string>
+
+    <!--STRINGHE DettaglioFotoDiarioActivity-->
+    <string name="cancellapaginadiario">You want to delete this page of the diary </string>
+    <string name="didascalia">Caption: </string>
+
+    <!--STRINGHE DiarioFragment-->
+    <string name="titolofragmentdiario">My diaries</string>
+    <string name="nuovodiario">New diary</string>
+    <string name="diariocrato">Diary crated</string>
+
+    <!--STRINGHE EsploraContenutoFragment-->
+    <string name="monumenti">monuments</string>
+
+    <!--STRINGHE EsploraFragment-->
+    <string name="esplora">Explore</string>
+
+    <!--STRINGHE Login-->
+    <string name="inseriscipassword">Insert password</string>
+    <string name="inserisciusername">Insert username</string>
+    <string name="loginfallito">Login failed</string>
+    <string name="accessofallito">Access failed</string>
+    <string name="nonhaiunaccount">You do not have an account? Register</string>
+    <string name="oppure">or</string>
+
+    <!--STRINGHE MainActivity-->
+    <string name="titolovuoiuscire">Exit</string>
+    <string name="vuoiuscire">do you want to exit the application </string>
+    <string name="si">Yes</string>
+
+    <!--STRINGHE PaginaDiarioSceltaPosizione-->
+    <string name="scegliunaposizione">Choose location</string>
+    <string name="errore">Error</string>
+
+    <!--STRINGHE Registrazione-->
+    <string name="inseriscinome">Insert your name</string>
+    <string name="inseriscicognome">Insert your surname</string>
+    <string name="inserisciindirizzoemail">Insert your e\-mail</string>
+    <string name="inseriscituapassword">Insert your password</string>
+    <string name="passwordnoncorrsipondente">Password mismatch</string>
+    <string name="registrazionefallita">Registration failed</string>
+    <string name="puoiaccedere">You can sign on</string>
+    <string name="caricamento">Loading</string>
+    <string name="registrazionecompletata">Registration complete</string>
+
+    <!--STRINGHE Inserisci Pagina Diario-->
+    <string name="datimancanti">Insert the missing data</string>
+    <string name="successo">Operation complete</string>
+    <string name="riprova">Operation failed. Try again</string>
+
+    <!--STRINGHE Toolbar_Actionmode-->
+    <string name="elementieliminati"> elements removed</string>
+    <string name="facebook_app_id">316184808741739</string>
+
+    <string name="share">Share</string>
+
+    <string name="modificasezione">Modify section</string>
+
+    <!--STRINGHE CustomizzaSezione-->
+    <string name="strutturaaggiornata">The section has been changed</string>
+</resources>

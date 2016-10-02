@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "135201366858",
+    "firebase_url": "https://app-turismo-505ec.firebaseio.com",
+    "project_id": "app-turismo-505ec",
+    "storage_bucket": "app-turismo-505ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135201366858:android:f11cebba346630ca",
+        "android_client_info": {
+          "package_name": "it.uniba.di.ivu.progettotesi.appturismo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135201366858-f3lop2v4o8n38h2ithr0ktipre25rsqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.uniba.di.ivu.progettotesi.appturismo",
+            "certificate_hash": "AB398B775CAF9C10A74865FAF9DE9B7A0C4979A8"
+          }
+        },
+        {
+          "client_id": "135201366858-jqjou36ptv4t5ugao3t83hlv2se2jo8g.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "135201366858-1eas7r1ge1u9505su50rdr91g6a0n2ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCZoXX-XpMel7eHBJHuVFhN2jSJ7bwz-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135201366858-jqjou36ptv4t5ugao3t83hlv2se2jo8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

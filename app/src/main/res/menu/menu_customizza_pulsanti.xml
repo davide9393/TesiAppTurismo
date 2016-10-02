@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/conferma"
+    android:icon="@drawable/ic_done_white_24dp"
+    app:showAsAction="ifRoom"
+    android:title="@string/modalita">
+</item>
+</menu>

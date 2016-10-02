@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="it.uniba.di.ivu.progettotesi.appturismo">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <uses-library android:name="com.google.android.maps" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature android:name="android.hardware.location.network" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DettaglioFotoDiarioActivity"
+            android:label="@string/dettaglio" />
+        <activity android:name=".InserisciPaginaDiario" />
+        <activity android:name=".PaginaDiarioSceltaPosizione" />
+        <activity android:name=".Percorso.PercorsoActivity"
+            android:label="Raggiungi"/>
+        <activity android:name=".MappaContenutoActivity" />
+        <activity android:name=".DettaglioActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAQJ_zuzqU0p3O8i1XLcRSwn6iCH0V4SNU" />
+        <meta-data
+            android:name="com.google.android.awareness.API_KEY"
+            android:value="AIzaSyAQJ_zuzqU0p3O8i1XLcRSwn6iCH0V4SNU" />
+        <meta-data
+            android:name="com.google.android.nearby.messages.API_KEY"
+            android:value="AIzaSyAQJ_zuzqU0p3O8i1XLcRSwn6iCH0V4SNU" />
+
+        <activity android:name=".Login" />
+        <activity android:name=".Registrazione" />
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="App Turismo"
+            tools:replace="android:theme"/>
+
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider316184808741739"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+
+    </application>
+
+</manifest>
