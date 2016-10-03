@@ -152,9 +152,6 @@ public class EsploraDettaglioFragment extends Fragment {
         return view;
     }
 
-
-
-
     @Override
     public void  onDestroyView(){
         super.onDestroyView();
