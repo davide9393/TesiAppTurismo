@@ -75,6 +75,14 @@ public class EsploraDettaglioFragment extends Fragment {
     private ViewPager viewPager;
     private ArrayList<String> sezioni;
     private ArrayList<ArrayList<String>> sottosezioni;
+    private ImageView immagine;
+    private TabLayout tabLayout;
+    static String citta;
+    private ImageView imageView;
+    private String foto,descrizione;
+    private Adapter adapter;
+    private Citta ci;
+    View view;
 
     public static EsploraDettaglioFragment newInstance() {
         Bundle args = new Bundle();
@@ -102,19 +110,11 @@ public class EsploraDettaglioFragment extends Fragment {
         getActivity().setTitle(citta);
     }
 
-
-
     @Override
     public void onStart(){
         super.onStart();
     }
 
-    static String citta;
-    private ImageView imageView;
-    private String foto,descrizione;
-    private Adapter adapter;
-    private Citta ci;
-    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -122,6 +122,11 @@ public class EsploraDettaglioFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_inbox, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
+        mListener.enableCollapse();
+       // immagine=(ImageView)getActivity().findViewById(R.id.backdrop);
+       // immagine.setVisibility(View.VISIBLE);
+       // tabLayout=(TabLayout)getActivity().findViewById(R.id.tabs);
+       // tabLayout.setVisibility(View.VISIBLE);
         Bundle bundle = this.getArguments();
         if(bundle!=null){
             /*citta = bundle.getString("nome_citta", "nome_citta");
@@ -163,7 +168,7 @@ public class EsploraDettaglioFragment extends Fragment {
         int id;
         if (context instanceof FragmentListener) {
             mListener = (FragmentListener) context;
-            mListener.enableCollapse();
+            //mListener.enableCollapse();
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement FragmentListener");

@@ -90,7 +90,6 @@ public class DettaglioActivity extends AppCompatActivity implements AppBarLayout
                 if(!preferito){
                     fabStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_18dp));
                     preferito=true;
-
                 }
                 else{
                     fabStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_18dp));

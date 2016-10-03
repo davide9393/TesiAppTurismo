@@ -116,6 +116,7 @@ public class EsploraContenutoFragment extends Fragment {
 
         setHasOptionsMenu(true);
         listaBottoni=new ArrayList<>();
+        mListener.enableCollapse();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         layout = (HorizontalScrollView) view. findViewById(R.id.horiz);
@@ -229,7 +230,7 @@ public class EsploraContenutoFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof FragmentListener2) {
             mListener = (FragmentListener2) context;
-            mListener.enableCollapse();
+            //mListener.enableCollapse();
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement FragmentInteractionListener");

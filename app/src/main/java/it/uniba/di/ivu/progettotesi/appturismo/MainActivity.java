@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -214,8 +215,6 @@ public class MainActivity extends AppCompatActivity implements
         imageView.setVisibility(View.GONE);
         tabLayout.setVisibility(View.GONE);
         collapsingToolbar.setTitleEnabled(false);
-        AppBarLayout.LayoutParams params =
-                (AppBarLayout.LayoutParams) collapsingToolbar.getLayoutParams();
         //params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
         //        | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
     }
@@ -225,8 +224,6 @@ public class MainActivity extends AppCompatActivity implements
         imageView.setVisibility(View.VISIBLE);
         tabLayout.setVisibility(View.VISIBLE);
         // collapsingToolbar.setTitleEnabled(true);
-        AppBarLayout.LayoutParams params =
-                (AppBarLayout.LayoutParams) collapsingToolbar.getLayoutParams();
         //params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
         //        | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS_COLLAPSED);
     }
