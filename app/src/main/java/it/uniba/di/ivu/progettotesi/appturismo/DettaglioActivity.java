@@ -3,10 +3,13 @@ package it.uniba.di.ivu.progettotesi.appturismo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -19,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -30,6 +34,7 @@ import it.uniba.di.ivu.progettotesi.appturismo.Percorso.PercorsoActivity;
 public class DettaglioActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
     private static final int PERCENTAGE_TO_SHOW_IMAGE = 20;
     private View fabMappa, fabChiama;
+    private FloatingActionButton fabStar;
     private int mMaxScrollSize;
     private boolean mIsImageHidden;
 
@@ -43,7 +48,7 @@ public class DettaglioActivity extends AppCompatActivity implements AppBarLayout
     private ImageView image;
     private boolean b;
     private TextView textView;
-
+    private boolean preferito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,23 @@ public class DettaglioActivity extends AppCompatActivity implements AppBarLayout
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         fabMappa = findViewById(R.id.fab1);
         fabChiama = findViewById(R.id.fab2);
+        fabStar = (FloatingActionButton)findViewById(R.id.fab3);
+
+        fabStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!preferito){
+                    fabStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_white_18dp));
+                    preferito=true;
+
+                }
+                else{
+                    fabStar.setImageDrawable(getResources().getDrawable(R.drawable.ic_star_border_white_18dp));
+                    preferito=false;
+                }
+            }
+        });
+
         if(!b){
             scontoList = new ArrayList<>();
             adapter = new ScontoAdapter(this, scontoList);
@@ -129,6 +151,8 @@ public class DettaglioActivity extends AppCompatActivity implements AppBarLayout
 
                 ViewCompat.animate(fabMappa).scaleY(0).scaleX(0).start();
                 ViewCompat.animate(fabChiama).scaleY(0).scaleX(0).start();
+                ViewCompat.animate(fabStar).scaleY(0).scaleX(0).start();
+
             }
         }
 
@@ -137,6 +161,7 @@ public class DettaglioActivity extends AppCompatActivity implements AppBarLayout
                 mIsImageHidden = false;
                 ViewCompat.animate(fabMappa).scaleY(1).scaleX(1).start();
                 ViewCompat.animate(fabChiama).scaleY(1).scaleX(1).start();
+                ViewCompat.animate(fabStar).scaleY(1).scaleX(1).start();
             }
         }
     }

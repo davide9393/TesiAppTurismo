@@ -214,7 +214,7 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
                         JSONObject sottosezione=ja.getJSONObject(j);
                         String prova=sottosezione.names().toString().replaceAll("[^a-zA-Z0-9]", "");
                         // Toast.makeText(getContext(), prova, Toast.LENGTH_SHORT).show();
-                        sottosezione.put(prova,pulsantiAdapter.getItem(j).getNome());
+                        sottosezione.put(pulsantiAdapter.getItem(j).getNome(),sottosezione.remove(prova));
                     }
                 }
 

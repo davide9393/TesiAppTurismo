@@ -246,8 +246,8 @@ public class EsploraDettaglioFragment extends Fragment {
                 for(int j=0; j<ja.length(); j++){
                     JSONObject sottosezione=ja.getJSONObject(j);
                     String b=sottosezione.names().toString().replaceAll("[^a-zA-Z0-9]", "");
-                    String n=sottosezione.getString(b);
-                    sottosez.add(n);
+                    //String n=sottosezione.getString(b);
+                    sottosez.add(b);
                 }
                 sottosezioni.add(sottosez);
             }
@@ -417,28 +417,28 @@ public class EsploraDettaglioFragment extends Fragment {
             // get json string from url
 
             //Prova con dati da altervista
-            JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
+            /*JSONObject json = jParser.getJSONFromUrl(yourJsonStringUrl);
             writeInSdCard(json);
-            ReadFile(sezioni,sottosezioni);
+            ReadFile(sezioni,sottosezioni);*/
 
             //QUI DEVO FARE LA QUERY AL DB
-            /*
+
             Gson gson = new Gson();
             String obj = gson.toJson(ci.struttura);
             Log.e("obj ",obj);
             String prova=obj.replace(":{",":[{");
             prova=prova.replace(",", "},{");
-            prova=prova.replace("}}", "}]");
+            prova=prova.replace("}}", "}]}");
+            prova=prova.replace("}}", "}]}");
             Log.e("json ",prova);
             try {
                 JSONObject json=new JSONObject(prova);
                 writeInSdCard(json);
                 ReadFile(sezioni,sottosezioni);
-                 Log.d("json ", json.toString());
+                Log.d("json ", json.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            */
 
             return null;
         }

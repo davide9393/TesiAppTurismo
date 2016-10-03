@@ -127,7 +127,6 @@ public class EsploraContenutoFragment extends Fragment {
 
         setupRecyclerView(mRecyclerView, nome_pulsante);
 
-
        /* ad=new AdapterHorizontal(mParam3);
         mHorizontalRecycler.setLayoutManager(layoutManager);
         mHorizontalRecycler.setAdapter(ad);*/

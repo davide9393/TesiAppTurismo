@@ -1,6 +1,3 @@
-
-
-
 package it.uniba.di.ivu.progettotesi.appturismo;
 
 import android.content.Context;
@@ -29,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,7 +79,8 @@ public class DettaglioDiarioFragmentLista extends Fragment {
         Bundle bundle = this.getArguments();
         if(bundle!=null){
             titoloDiario = bundle.getString("titolodiario", "diario");
-            ((MainActivity) getActivity()).getSupportActionBar().setTitle(titoloDiario);
+            String sub=titoloDiario.substring(Utility.uid.length(),titoloDiario.length());
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle(sub);
         }
 
         setHasOptionsMenu(true);
@@ -120,6 +119,7 @@ public class DettaglioDiarioFragmentLista extends Fragment {
                 else {
                     Intent intent = new Intent(getActivity(), DettaglioFotoDiarioActivity.class);
                     Bundle extras = new Bundle();
+                    Toast.makeText(getContext(), "else", Toast.LENGTH_SHORT).show();
                     Pagina pagina = pagineDiario.get(position);
                     extras.putParcelable("pagina", pagina);
                     extras.putString("titoloDiario", titoloDiario);
@@ -139,8 +139,7 @@ public class DettaglioDiarioFragmentLista extends Fragment {
 
     private void getInfoDB(){
 
-//        Log.d("dimensione iniziale",Integer.toString(pagineDiario.size()));
-        DatabaseReference mPagina=mDatabase.child("Pagina");
+     /*   DatabaseReference mPagina=mDatabase.child("Pagina");
         mPagina.keepSynced(true);
         mPagina.addValueEventListener(new ValueEventListener() {
             int i = 0;
@@ -157,7 +156,6 @@ public class DettaglioDiarioFragmentLista extends Fragment {
                     }
 
                 }
-      //          Toast.makeText(getContext(), "ondatachange" + i++, Toast.LENGTH_SHORT).show();
 
                 mRecyclerView.setHasFixedSize(true);
                 mLayoutManager = new LinearLayoutManager(getActivity());
@@ -175,7 +173,90 @@ public class DettaglioDiarioFragmentLista extends Fragment {
                 Toast.makeText(getActivity(), databaseError.toString(), Toast.LENGTH_SHORT).show();
 
             }
-        });
+        });*/
+
+
+        DatabaseReference mPagina=mDatabase.child("Pagina");
+        pagineDiario=new ArrayList<Pagina>();
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+
+                Log.d("chiamata ", "onchildadded");
+                // funziona: al 1 avvio dell'activity mi restituisce la lista di tutti gli elementi
+                // ad ogni aggiunta di un elemento mi restituisce solo l'elemento aggiunto
+                //non ha bisogno di un iterator a differenza del value event
+
+                //Log.d(TAG, "onChildAdded: chiave nodo precedente " + previousChildName);
+
+                Pagina value = dataSnapshot.getValue(Pagina.class);
+                if (value != null && value.diario.equals(titoloDiario)) {
+                    pagineDiario.add(value);
+                }
+
+
+                mRecyclerView.setHasFixedSize(true);
+                mLayoutManager = new LinearLayoutManager(getActivity());
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                mAdapter = new CustomAdapterDiario(pagineDiario, getContext());
+                mRecyclerView.setAdapter(mAdapter);
+
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                //non sono sicuro su questa
+                Log.d("chiamata ", "onchildchanged");
+                for(int i=0;i<pagineDiario.size();i++){
+                    if(pagineDiario.get(i).percorso.contains(dataSnapshot.getKey())){
+                        Pagina p=dataSnapshot.getValue(Pagina.class);
+                        pagineDiario.remove(i);
+                        pagineDiario.add(i,p);
+                        break;
+                    }
+                }
+
+
+           /*     mAdapter = new CustomAdapterDiario(pagineDiario, getContext());
+                mRecyclerView.setAdapter(mAdapter);
+*/
+                mAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.d("chiamata ", "onchildremove");
+                Log.d("remove ", dataSnapshot.getKey());
+                for(int i=0;i<pagineDiario.size();i++){
+                    if(pagineDiario.get(i).percorso.contains(dataSnapshot.getKey())) {
+                        Log.d(" va if ", dataSnapshot.getKey());
+                        pagineDiario.remove(i);
+                    }
+                }
+               /* mAdapter = new CustomAdapterDiario(pagineDiario, getContext());
+                mRecyclerView.setAdapter(mAdapter);*/
+
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+                Log.d(TAG, "onChildMoved:" + dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "postComments:onCancelled", databaseError.toException());
+                Toast.makeText(getActivity(), "Failed to load comments.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+        mPagina.addChildEventListener(childEventListener);
+
+        mPagina.keepSynced(true);
 
     }
 
@@ -249,7 +330,7 @@ public class DettaglioDiarioFragmentLista extends Fragment {
             mListener = (FragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement FragmentListener");
+                    + " must implement OnCheeseCategoriesFragmentListener");
         }
     }
 
