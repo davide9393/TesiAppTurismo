@@ -56,13 +56,11 @@ public class EsploraContenutoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private ArrayList<String> mParam3; //contiene i pulsanti del tab
     private String mParam2;  //Titolo del tab
-    private String citta;
+    private Citta citta;
     static String nome_pulsante;
     private ArrayList<Button> listaBottoni;
     private HorizontalScrollView layout;
     private LinearLayout row;
-    private String foto;
-    private String descrizione;
     private CustomAdapterContenuto customAdapterContenuto;
     private RecyclerView mHorizontalRecycler;
     private AdapterHorizontal ad;
@@ -71,14 +69,15 @@ public class EsploraContenutoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static EsploraContenutoFragment newInstance(String param2,ArrayList<String> param3, String citta,String foto,String descrizione) {
+    public static EsploraContenutoFragment newInstance(String param2,ArrayList<String> param3, Citta ci) {
         EsploraContenutoFragment fragment = new EsploraContenutoFragment();
         Bundle args = new Bundle();
         args.putString("sometitle2", param2);
         args.putStringArrayList("sometitle3", param3);
-        args.putString("citta", citta);
+        /*args.putString("citta", citta);
         args.putString("foto", foto);
-        args.putString("descrizione", descrizione);
+        args.putString("descrizione", descrizione);*/
+        args.putParcelable("citta",ci);
         fragment.setArguments(args);
         return fragment;
     }
@@ -102,9 +101,10 @@ public class EsploraContenutoFragment extends Fragment {
         isBackFromB=false;
         mParam2 = getArguments().getString("sometitle2");
         mParam3=getArguments().getStringArrayList("sometitle3");
-        citta=getArguments().getString("citta");
+        /*citta=getArguments().getString("citta");
         foto=getArguments().getString("foto");
-        descrizione=getArguments().getString("descrizione");
+        descrizione=getArguments().getString("descrizione");*/
+        citta=getArguments().getParcelable("citta");
 
     }
 
@@ -213,9 +213,10 @@ public class EsploraContenutoFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("tab", mParam2);
                 bundle.putStringArrayList("sottosezioni", mParam3);
-                bundle.putString("citta", citta);
+                /*bundle.putString("citta", citta);
                 bundle.putString("foto", foto);
-                bundle.putString("descrizione", descrizione);
+                bundle.putString("descrizione", descrizione);*/
+                bundle.putParcelable("citta",citta);
                 esplora.setArguments(bundle);
                 ft.replace(R.id.fragment, esplora);
                 ft.addToBackStack(null);

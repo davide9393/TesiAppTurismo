@@ -75,8 +75,6 @@ public class EsploraDettaglioFragment extends Fragment {
     private ViewPager viewPager;
     private ArrayList<String> sezioni;
     private ArrayList<ArrayList<String>> sottosezioni;
-    private ImageView immagine;
-    private TabLayout tabLayout;
     static String citta;
     private ImageView imageView;
     private String foto,descrizione;
@@ -96,12 +94,9 @@ public class EsploraDettaglioFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    private boolean isBackFromB;
     @Override
     public void onPause() {
         super.onPause();
-        isBackFromB = true;
-        //adapter=null;
     }
 
     @Override
@@ -123,10 +118,6 @@ public class EsploraDettaglioFragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
         mListener.enableCollapse();
-       // immagine=(ImageView)getActivity().findViewById(R.id.backdrop);
-       // immagine.setVisibility(View.VISIBLE);
-       // tabLayout=(TabLayout)getActivity().findViewById(R.id.tabs);
-       // tabLayout.setVisibility(View.VISIBLE);
         Bundle bundle = this.getArguments();
         if(bundle!=null){
             /*citta = bundle.getString("nome_citta", "nome_citta");
@@ -134,6 +125,9 @@ public class EsploraDettaglioFragment extends Fragment {
             descrizione = bundle.getString("descrizione", "descrizione");
             */
             ci=bundle.getParcelable("citta");
+            Log.e("ci:",ci.getNome_citta());
+            Log.e("ci:",ci.foto);
+            Log.e("ci:",ci.struttura.toString());
             citta = ci.nome_citta;
             foto = ci.foto;
             descrizione = ci.descrizione;
@@ -141,14 +135,10 @@ public class EsploraDettaglioFragment extends Fragment {
         }
 
         adapter = new Adapter(getChildFragmentManager());
-       // if (viewPager != null) {
+        if (viewPager != null) {
             setupViewPager(viewPager);
-            //qui stava ((MainActivity) getActivity()).getTabLayout().setupWithViewPager(viewPager);
             adapter.notifyDataSetChanged();
-       // }
-
-
-        Log.e("EsploraDettaglio","onCreateView");
+        }
         return view;
     }
 
@@ -215,7 +205,7 @@ public class EsploraDettaglioFragment extends Fragment {
 
     }
 
-    public void ReadFile (ArrayList<String> sezioni, ArrayList<ArrayList<String>> sottosezioni){
+    public JSONObject ReadFile (){
         try {
             File yourFile = new File(Environment.getExternalStorageDirectory(), "AppTurismo/strutturaApp_" + citta +".json");
             //il file va come parametro perchè da esso posso fare operazioni di lettura
@@ -228,16 +218,15 @@ public class EsploraDettaglioFragment extends Fragment {
                 json = Charset.defaultCharset().decode(bb).toString();
             }
             catch(Exception e){
-                Log.e("primo catch: ","errore");
                 e.printStackTrace();
             }
             finally {
-                Log.e("finally: ","bene");
                 stream.close();
             }
 
             JSONObject jsonobject=new JSONObject(json);
-            JSONArray jsonArray=jsonobject.getJSONArray("contenuto");
+            return jsonobject;
+            /*JSONArray jsonArray=jsonobject.getJSONArray("contenuto");
             for(int i=0; i<jsonArray.length(); i++){
                 JSONObject jo=jsonArray.getJSONObject(i);
                 String sezione=jo.names().toString().replaceAll("[^a-zA-Z0-9]", "");
@@ -252,88 +241,48 @@ public class EsploraDettaglioFragment extends Fragment {
                     sottosez.add(b);
                 }
                 sottosezioni.add(sottosez);
-            }
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void insertinArray(JSONObject jsonobject,ArrayList<String> sezioni, ArrayList<ArrayList<String>> sottosezioni) throws JSONException {
+        JSONArray jsonArray=jsonobject.getJSONArray("contenuto");
+        for(int i=0; i<jsonArray.length(); i++){
+            JSONObject jo=jsonArray.getJSONObject(i);
+            String sezione=jo.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+            sezioni.add(sezione);
+            JSONArray ja=jo.getJSONArray(sezione);
+            ArrayList<String> prova=null;
+            ArrayList<String> sottosez=new ArrayList<>();
+            for(int j=0; j<ja.length(); j++){
+                JSONObject sottosezione=ja.getJSONObject(j);
+                String b=sottosezione.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+                //String n=sottosezione.getString(b);
+                sottosez.add(b);
+            }
+            sottosezioni.add(sottosez);
         }
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
-        //SE VOGLIO POPOLARE IL JSON DALLA CARTELLA ASSETS
-        //getJSONdata();
-
         //SE VOGLIO POPOLARLO DAL SERVER
         new AsyncTaskParseJson().execute();
     }
 
-    /*
-    private void getJSONdata() {
-        //ArrayList<String> sezioni=new ArrayList<>();
-        //ArrayList<ArrayList<String>> sottosezioni=new ArrayList<>();
-        sezioni=new ArrayList<>();
-        sottosezioni=new ArrayList<>();
-        String json;
-        json=loadJSONFromAsset();
-        //json=getJSONFromUrl(url);
-        try{
-            JSONObject jsonobject=new JSONObject(json);
-            JSONArray jsonArray=jsonobject.getJSONArray("contenuto");
-            for(int i=0; i<jsonArray.length(); i++){
-                JSONObject jo=jsonArray.getJSONObject(i);
-                String sezione=jo.names().toString().replaceAll("[^a-zA-Z0-9]", "");
-                sezioni.add(sezione);
-                JSONArray ja=jo.getJSONArray(sezione);
-                ArrayList<String> prova=null;
-                ArrayList<String> sottosez=new ArrayList<>();
-                for(int j=0; j<ja.length(); j++){
-                    JSONObject sottosezione=ja.getJSONObject(j);
-                    String b=sottosezione.names().toString().replaceAll("[^a-zA-Z0-9]", "");
-                    String n=sottosezione.getString(b);
-                    sottosez.add(n);
-                }
-                sottosezioni.add(sottosez);
-            }
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        impostaTab(sezioni, sottosezioni);
-
-    }
-*/
-
     public void impostaTab(ArrayList<String> sezioni,ArrayList<ArrayList<String>> sottosezioni){
         for(int i=0; i<sezioni.size();i++){
             //aggiungo un fragment come tab creando una nuova istanza(tab,sottotab) e passando il nome del tab sezioni.get(i)
-            adapter.addFragment(EsploraContenutoFragment.newInstance(sezioni.get(i),sottosezioni.get(i),citta,foto,descrizione), sezioni.get(i));
+            adapter.addFragment(EsploraContenutoFragment.newInstance(sezioni.get(i),sottosezioni.get(i),ci), sezioni.get(i));
         }
         viewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         //Toast.makeText(getContext(), "impostatab", Toast.LENGTH_SHORT).show();
     }
-
-    /*
-    public String loadJSONFromAsset() {
-        String json = null;
-        try {
-            String file;
-            if("it".equalsIgnoreCase(getString(R.string.language))) file= "contenuto.json";
-            else file="contenuto_eng.json";
-            InputStream is = getActivity().getAssets().open(file);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
-    }
-*/
 
     static class Adapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragments = new ArrayList<>();
@@ -380,7 +329,32 @@ public class EsploraDettaglioFragment extends Fragment {
         void setHomeButton();
     }
 
-
+    private boolean uguali(JSONObject jsonInterno,JSONObject jsonServer) throws JSONException {
+        JSONArray jsonArrayInterno=jsonInterno.getJSONArray("contenuto");
+        JSONArray jsonArrayServer=jsonServer.getJSONArray("contenuto");
+        if(jsonArrayInterno.length()!=jsonArrayServer.length())return false;
+        else{
+            for(int i=0; i<jsonArrayInterno.length(); i++){
+                JSONObject joInterno=jsonArrayInterno.getJSONObject(i);
+                JSONObject joServer=jsonArrayServer.getJSONObject(i);
+                String sezioneInterno=joInterno.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+                String sezioneServer=joServer.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+                JSONArray jaInterno=joInterno.getJSONArray(sezioneInterno);
+                JSONArray jaServer=joServer.getJSONArray(sezioneServer);
+                if(jaInterno.length()!=jaServer.length()) return false;
+            }
+            for(int i=0; i<jsonArrayServer.length(); i++){
+                JSONObject joInterno=jsonArrayInterno.getJSONObject(i);
+                JSONObject joServer=jsonArrayServer.getJSONObject(i);
+                String sezioneInterno=joInterno.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+                String sezioneServer=joServer.names().toString().replaceAll("[^a-zA-Z0-9]", "");
+                JSONArray jaInterno=joInterno.getJSONArray(sezioneInterno);
+                JSONArray jaServer=joServer.getJSONArray(sezioneServer);
+                if(jaInterno.length()!=jaServer.length()) return false;
+            }
+            return true;
+        }
+    }
 
 
     /////////////////////////////////////
@@ -389,9 +363,6 @@ public class EsploraDettaglioFragment extends Fragment {
         final String TAG = "AsyncTaskParseJsonTAG.java";
 
         private ProgressDialog progressDialog = new ProgressDialog(getContext());
-        // set your json string url here
-        String yourJsonStringUrl = "http://conselettronica.altervista.org/contenuto.json";
-
         // contacts JSONArray
         JSONArray dataJsonArr = null;
 
@@ -428,16 +399,30 @@ public class EsploraDettaglioFragment extends Fragment {
             Gson gson = new Gson();
             String obj = gson.toJson(ci.struttura);
             Log.e("obj ",obj);
-            String prova=obj.replace(":{",":[{");
+            String prova=obj.replace(":{", ":[{");
             prova=prova.replace(",", "},{");
             prova=prova.replace("}}", "}]}");
             prova=prova.replace("}}", "}]}");
-            Log.e("json ",prova);
             try {
-                JSONObject json=new JSONObject(prova);
-                writeInSdCard(json);
-                ReadFile(sezioni,sottosezioni);
-                Log.d("json ", json.toString());
+                //jsonServer è preso dal server
+                JSONObject jsonServer=new JSONObject(prova);
+                Log.e("json esternp",jsonServer.toString());
+                //lo scrivo solo se non esiste
+                writeInSdCard(jsonServer);
+
+                //leggo il file dalla memoria interna, jsonInterno è preso dalla memoria dell'app
+                JSONObject jsonInterno=ReadFile();
+                Log.e("json interno",jsonInterno.toString());
+
+                if(uguali(jsonInterno,jsonServer)){
+                    insertinArray(jsonInterno,sezioni,sottosezioni);
+                    Log.e("EsploraDettaglio","preso il json interno");
+                }
+                else{
+                    insertinArray(jsonServer,sezioni,sottosezioni);
+                    Log.e("EsploraDettaglio","preso il json server");
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -450,7 +435,6 @@ public class EsploraDettaglioFragment extends Fragment {
             impostaTab(sezioni, sottosezioni);
             ((MainActivity) getActivity()).getTabLayout().setupWithViewPager(viewPager);
             this.progressDialog.dismiss();
-            Log.e("popostexecute","fatto");
         }
     }
     /////////////////////////////////////////

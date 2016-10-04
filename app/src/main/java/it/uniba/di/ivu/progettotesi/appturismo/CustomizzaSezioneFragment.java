@@ -50,9 +50,7 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
     private List<String> pulsantipassati;
     private RecyclerView pulsantiRecyclerView;
     private PulsantiCustomAdapter pulsantiAdapter;
-    private String citta;
-    private String foto;
-    private String descrizione;
+    private Citta citta;
     private FragmentListener mListener;
 
 
@@ -85,9 +83,10 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
         Bundle bundle = this.getArguments();
         if(bundle!=null){
             tab = bundle.getString("tab", "tab");
-            citta = bundle.getString("citta", "citta");
+            /*citta = bundle.getString("citta", "citta");
             foto = bundle.getString("foto", "foto");
-            descrizione = bundle.getString("descrizione", "descrizione");
+            descrizione = bundle.getString("descrizione", "descrizione");*/
+            citta=bundle.getParcelable("citta");
             pulsantipassati=bundle.getStringArrayList("sottosezioni");
             ((MainActivity) getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.modificasezione) + " " + tab);
         }
@@ -167,7 +166,7 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
 
     public void ReadFile(){
         try {
-            File yourFile = new File(Environment.getExternalStorageDirectory(), "AppTurismo/strutturaApp_" + citta +".json");
+            File yourFile = new File(Environment.getExternalStorageDirectory(), "AppTurismo/strutturaApp_" + citta.nome_citta +".json");
             //il file va come parametro perchè da esso posso fare operazioni di lettura
             FileInputStream stream = new FileInputStream(yourFile);
             String json = null;
@@ -238,7 +237,7 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
 
         File fileToSaveJson = new File(Environment.getExternalStorageDirectory(), "AppTurismo");
         // if external memory exists and folder with name Notes
-        File filepath = new File(fileToSaveJson, "strutturaApp_" + citta +".json");  // file path to save
+        File filepath = new File(fileToSaveJson, "strutturaApp_" + citta.nome_citta +".json");  // file path to save
 
         //if(!filepath.exists()){
         BufferedOutputStream bos;
@@ -321,9 +320,10 @@ public class CustomizzaSezioneFragment extends Fragment implements OnStartDragLi
             EsploraDettaglioFragment esplora = new EsploraDettaglioFragment();
 
             Bundle bundle = new Bundle();
-            Citta c=new Citta(foto,descrizione);
-            c.setNome_citta(citta);
-            bundle.putParcelable("citta", c);
+            /*Citta c=new Citta(descrizione,foto);
+            c.setNome_citta(citta);*/
+
+            bundle.putParcelable("citta", citta);
             esplora.setArguments(bundle);
             ft.replace(R.id.fragment, esplora);
             ft.addToBackStack(null);

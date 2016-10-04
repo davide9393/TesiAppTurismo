@@ -81,7 +81,7 @@ public class EsploraFragment extends Fragment {
 
         DatabaseReference mCitta= FirebaseDatabase.getInstance().getReference().child("Citta");
         mCitta.keepSynced(true);
-        mCitta.addListenerForSingleValueEvent(new ValueEventListener() {
+        mCitta.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 citta=new ArrayList<>();
